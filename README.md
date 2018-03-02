@@ -80,7 +80,7 @@ In this case, we have taken a `Publisher` provided by some other API, at that st
 
 ## Implementation
 
-Underneath, this API builds a graph of stages that describe the processing. When `build` is invoked, this graph is passed to a `ReactiveStreamsEngine` to build the `Publisher`, `Subscriber`, `Processor` or `CompletionStage` as necessary. During this phase, the underlying engine implementation can do any processing on the graph it wants - it can fuse stages together, it can wrap callbacks in context supplying wrappers, etc. The `build` method is overloaded, one takse an explicit `ReactiveStreamsEngine`, the other looks up the `ReactiveStreamsEngine` using the JDK `ServiceLoader` mechanism.
+Underneath, this API builds a graph of stages that describe the processing. When `build` is invoked, this graph is passed to a `ReactiveStreamsEngine` to build the `Publisher`, `Subscriber`, `Processor` or `CompletionStage` as necessary. During this phase, the underlying engine implementation can do any processing on the graph it wants - it can fuse stages together, it can wrap callbacks in context supplying wrappers, etc. The `build` method is overloaded, one takes an explicit `ReactiveStreamsEngine`, the other looks up the `ReactiveStreamsEngine` using the JDK `ServiceLoader` mechanism.
 
 An engine based on Akka Streams is already implemented, as is an engine based on RxJava. No work has been done on a zero dependency RI for the JDK, though there have been a few experimental efforts that could be used as a starter for this.
 
